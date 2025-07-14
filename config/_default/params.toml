@@ -77,7 +77,7 @@ enabled = true
 ## Comments
 [comments]
 enabled = true
-provider = "disqus"
+provider = "giscus"
 
 [comments.disqusjs]
 shortname = ""
@@ -128,13 +128,13 @@ serverName = "cactus.chat"
 siteName = ""
 
 [comments.giscus]
-repo = ""
-repoID = ""
-category = ""
-categoryID = ""
-mapping = ""
-lightTheme = ""
-darkTheme = ""
+repo = "ALKALiKong233/ALKALiKong233.github.io"
+repoID = "R_kgDOPLy5iQ"
+category = "General"
+categoryID = "DIC_kwDOPLy5ic4Cs7am"
+mapping = "og:title"
+lightTheme = "light_tritanopia"
+darkTheme = "https://blog.alkali.top/css/giscus-custom-dark.css"
 reactionsEnabled = 1
 emitMetadata = 0
 

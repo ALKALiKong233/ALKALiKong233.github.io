@@ -1,0 +1,12 @@
+@import url("https://giscus.app/themes/dark_tritanopia.css");
+main {
+    /* 标签栏颜色 */
+    --color-canvas-subtle: #585858;
+    --color-btn-selected-bg: #585858;
+    --color-canvas-overlay: #585858;
+    /* 编辑区域颜色 */
+    --color-canvas-inset: #272822;
+    /* 背景颜色 */
+    --color-canvas-default: #424242;
+    --color-segmented-control-button-bg: #424242;
+}
