@@ -1,7 +1,7 @@
 baseURL = 'https://blog.alkali.top/'
 languageCode = 'zh-CN'
 title = "ALKALiKong's blog"
-theme = 'hugo-theme-stack'
+theme = 'stack'
 
 [params]
 [params.sidebar]
