@@ -1,0 +1,25 @@
+# Configure main menu and social menu
+#[[main]]
+#identifier = "home"
+#name = "Home"
+#url = "/"
+#[main.params]
+#icon = "home"
+#newtab = true
+
+[[main]]
+identifier = "home"
+name = "Home"
+url = "/"
+weight = 10
+[main.params]
+    icon = "home"
+
+[[main]]
+identifier = "github"
+name = "GitHub"
+url = "https://github.com/ALKALiKong233"
+weight = 20
+[main.params]
+    icon = "brand-github"
+    newTab = true

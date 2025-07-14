@@ -1,0 +1,4 @@
+# Use submodule instead of module to use theme
+
+[[imports]]
+path = "github.com/CaiJimmy/hugo-theme-stack/v3"
