@@ -71,20 +71,28 @@ public:
   
     // [left, right]  
     int query(Node* node, int left, int right) {  
-        if (node->left == left && node->right == right) {  
-            return node->sum;  
-        }  
-  
-        if (right <= (node->left + node->right) / 2) {  
-            return query(node->l, left, right);  
-        } else if (left > (node->left + node->right) / 2) {  
-            return query(node->r, left, right);  
-        } else {  
-            int sum = 0;  
-            sum += query(node->l, left, (node->left + node->right) / 2);  
-            sum += query(node->r, (node->left + node->right) / 2 + 1, right);  
-            return sum;  
-        }  
+        // 1. 边界检查：无交集时返回0
+        if (node->right < left || node->left > right) {
+            return 0;
+        }
+        
+        // 2. 完全包含优化：查询区间完全包含节点区间时直接返回
+        if (left <= node->left && node->right <= right) {
+            return node->sum;
+        }
+
+        // 3. 部分重叠时才递归
+        int sum = 0;
+        int mid = (node->left + node->right) / 2;
+        
+        if (left <= mid && node->l) {
+            sum += query(node->l, left, right);
+        }
+        if (right > mid && node->r) {
+            sum += query(node->r, left, right);
+        }
+        
+        return sum;
     }  
   
     // [left, right]  
@@ -156,20 +164,28 @@ public:
         }  
   
         // 当前位置已经被使用，开始向下访问  
-        if (node->left == left && node->right == right) {  
-            return node->sum;  
-        }  
-  
-        if (right <= (node->left + node->right) / 2) {  
-            return query(node->l, left, right);  
-        } else if (left > (node->left + node->right) / 2) {  
-            return query(node->r, left, right);  
-        } else {  
-            int sum = 0;  
-            sum += query(node->l, left, (node->left + node->right) / 2);  
-            sum += query(node->r, (node->left + node->right) / 2 + 1, right);  
-            return sum;  
-        }  
+        // 1. 边界检查：无交集时返回0
+        if (node->right < left || node->left > right) {
+            return 0;
+        }
+        
+        // 2. 完全包含优化：查询区间完全包含节点区间时直接返回
+        if (left <= node->left && node->right <= right) {
+            return node->sum;
+        }
+
+        // 3. 部分重叠时才递归
+        int sum = 0;
+        int mid = (node->left + node->right) / 2;
+        
+        if (left <= mid && node->l) {
+            sum += query(node->l, left, right);
+        }
+        if (right > mid && node->r) {
+            sum += query(node->r, left, right);
+        }
+        
+        return sum;
     }  
   
     // [left, right]  
@@ -278,20 +294,28 @@ public:
         // 先把要访问的节点的懒标记推下去  
         pullDown(node);  
   
-        if (node->left == left && node->right == right) {  
-            return node->sum;  
-        }  
-  
-        if (right <= (node->left + node->right) / 2) {  
-            return query(node->l, left, right);  
-        } else if (left > (node->left + node->right) / 2) {  
-            return query(node->r, left, right);  
-        } else {  
-            int sum = 0;  
-            sum += query(node->l, left, (node->left + node->right) / 2);  
-            sum += query(node->r, (node->left + node->right) / 2 + 1, right);  
-            return sum;  
-        }  
+        // 1. 边界检查：无交集时返回0
+        if (node->right < left || node->left > right) {
+            return 0;
+        }
+        
+        // 2. 完全包含优化：查询区间完全包含节点区间时直接返回
+        if (left <= node->left && node->right <= right) {
+            return node->sum;
+        }
+
+        // 3. 部分重叠时才递归
+        int sum = 0;
+        int mid = (node->left + node->right) / 2;
+        
+        if (left <= mid && node->l) {
+            sum += query(node->l, left, right);
+        }
+        if (right > mid && node->r) {
+            sum += query(node->r, left, right);
+        }
+        
+        return sum;
     }  
   
     // [left, right]  
@@ -341,6 +365,7 @@ public:
 3. 按理来说 update 函数也应该判断 nullptr，不过我为了确定我写的代码是无误的所以留了一手没有判断，写的时候记得加进去。
 4. 这个实现的是区间累加线段树，如需区间赋值线段树还是要用到别的写法的（）
 5. 我的写法还是略显繁琐的，不过已经把我这一路优化的思路体现出来了。
+6. 2025-07-18: 在写权值线段树时发现了之前写的代码的性能问题，所以更新一下，现在查询应该就是正常的 O(logN) 了。
 
 # 模板
 
