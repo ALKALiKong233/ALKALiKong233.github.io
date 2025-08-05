@@ -860,6 +860,11 @@ uint8_t simple_st7789_init(void)
     res = simple_st7789_send_data(0x00); // 正常方向，RGB顺序
     if (res != 0) return 10;
     
+    // 反转颜色
+    res = simple_st7789_send_command(ST7789_INVON);
+    if (res != 0) return 13;
+    st7789_delay_ms(10);
+
     // 正常显示模式
     res = simple_st7789_send_command(ST7789_NORON);
     if (res != 0) return 11;
@@ -954,6 +959,8 @@ uint8_t simple_st7789_draw_pixel(uint16_t x, uint16_t y, uint16_t color)
 ```
 
 应该看注释能看懂吧（？），这个驱动实现了绘制矩形的功能。
+
+20250805 Update: 屏幕默认颜色是反的，需要在初始化时开启颜色反转 (`ST7789_INVON`) 才能得到正确的颜色，有大佬知道这是为啥嘛 O.O ?
 
 ## 测试程序
 
